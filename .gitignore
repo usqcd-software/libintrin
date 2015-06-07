@@ -4,3 +4,4 @@ configure
 include/Makefile.in
 lib/Makefile.in
 Makefile.in
+autom4te.cache
