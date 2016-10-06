@@ -1,7 +1,8 @@
 aclocal.m4
-config.h.in
 configure
+examples/Makefile.in
 include/Makefile.in
 lib/Makefile.in
 Makefile.in
 autom4te.cache
+
