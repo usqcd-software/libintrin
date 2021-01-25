@@ -18,9 +18,12 @@ add_library(libintrin sse_add_su3_vector.c
 target_include_directories( libintrin PUBLIC
 						   $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/../include>
 						   $<INSTALL_INTERFACE:include> )
-
+target_include_directories( libintrin PUBLIC
+						   $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/../include>
+						   $<INSTALL_INTERFACE:include> )
 install(TARGETS libintrin
 		EXPORT libintrin
 		LIBRARY DESTINATION lib
 		ARCHIVE DESTINATION lib
+		RUNTIME DESTINATION bin
 )
