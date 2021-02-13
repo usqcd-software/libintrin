@@ -21,9 +21,18 @@ target_include_directories( libintrin PUBLIC
 target_include_directories( libintrin PUBLIC
 						   $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/../include>
 						   $<INSTALL_INTERFACE:include> )
+
 install(TARGETS libintrin
-		EXPORT libintrin
+		EXPORT LibIntrinTargets
 		LIBRARY DESTINATION lib
 		ARCHIVE DESTINATION lib
 		RUNTIME DESTINATION bin
+		INCLUDES DESTINATION include
 )
+
+install(EXPORT LibIntrinTargets
+	FILE LibIntrinTargets.cmake
+	NAMESPACE LibIntrin::
+	DESTINATION lib/cmake/LibIntrin)
+
+ADD_LIBRARY(LibIntrin::libintrin ALIAS libintrin)
