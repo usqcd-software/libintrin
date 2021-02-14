@@ -19,7 +19,7 @@ add_subdirectory(lib)
 
 # install the headers 
 install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/include
-    	DESTINATION ${CMAKE_INSTALL_PREFIX}
+    	DESTINATION .
     	FILES_MATCHING PATTERN "*.h")
     	
  # write the file exporting the targets
