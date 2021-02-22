@@ -40,7 +40,7 @@ write_basic_package_version_file(
 # install it
 install(FILES
           "${CMAKE_CURRENT_BINARY_DIR}/LibIntrinConfig.cmake"
-           ${CMAKE_CURRENT_BINARY_DIR}/libintrinConfigVersion.cmake
+           ${CMAKE_CURRENT_BINARY_DIR}/LibIntrinConfigVersion.cmake
         DESTINATION 
            lib/cmake/LibIntrin
 )
