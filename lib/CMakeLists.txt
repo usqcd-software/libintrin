@@ -21,6 +21,12 @@ target_include_directories( libintrin PUBLIC
 target_include_directories( libintrin PUBLIC
 						   $<BUILD_INTERFACE:${CMAKE_CURRENT_BINARY_DIR}/../include>
 						   $<INSTALL_INTERFACE:include> )
+						   
+if( LibIntrin_SANITIZER_OPTS )
+  target_compile_options(libintrin PUBLIC ${LibIntrin_SANITIZER_OPTS})
+  target_link_options(libintrin PUBLIC ${LibIntrin_SANITIZER_OPTS})
+endif() 
+
 
 install(TARGETS libintrin
 		EXPORT LibIntrinTargets

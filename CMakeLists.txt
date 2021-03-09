@@ -7,6 +7,9 @@ project(LibIntrin VERSION 2.0
 include( GNUInstallDirs)
 include( CMakePackageConfigHelpers)
 
+# Enable Address address and undefined behaviour sanitizers
+option(LibIntrin_ENABLE_SANITIZERS "Enable Address and Undefined Behaviour Sanitizers" OFF)
+
 # Create xpath_reader_config_internal.h
 configure_file(${CMAKE_CURRENT_SOURCE_DIR}/include/libintrin_config_internal.h.cmake.in
 	       ${CMAKE_CURRENT_BINARY_DIR}/include/libintrin_config_internal.h)
@@ -14,7 +17,16 @@ configure_file(${CMAKE_CURRENT_SOURCE_DIR}/include/libintrin_config_internal.h.c
 # Mark file for installation
 install( FILES ${CMAKE_CURRENT_BINARY_DIR}/include/libintrin_config_internal.h DESTINATION include)
 	
-			   
+# Deal with Sanitizer
+if( LibIntrin_ENABLE_SANITIZERS )
+  if( ( CMAKE_CXX_COMPILER_ID MATCHES "Clang" AND CMAKE_CXX_COMPILER_VERSION VERSION_GREATER_EQUAL 3.1)
+     OR ( CMAKE_CXX_COMPILER_ID MATCHES "GNU" AND CMAKE_CXX_COMPILER_VERSION VERSION_GREATER_EQUAL 4.8) )
+      message(STATUS "LibIntrin: Setting Sanitizer options")
+      set(LibIntrin_SANITIZER_OPTS "-fsanitize=address,undefined")
+  else()
+    message(STATUS "Don't know how to enable sanitizers for ${CMAKE_CXX_COMPILER_ID}... Ignoring")
+  endif()
+endif()    
 add_subdirectory(lib)
 
 # install the headers 
