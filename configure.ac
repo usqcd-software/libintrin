@@ -8,6 +8,7 @@ AC_CHECK_TOOL(AR, ar, [ar])
 
 AM_INIT_AUTOMAKE
 
+AC_CONFIG_HEADERS([include/libintrin_config_internal.h])
 AC_CONFIG_FILES(Makefile)
 AC_CONFIG_FILES(lib/Makefile)
 AC_CONFIG_FILES(include/Makefile)
