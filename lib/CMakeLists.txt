@@ -23,7 +23,7 @@ target_include_directories( libintrin PUBLIC
 						   $<INSTALL_INTERFACE:include> )
 						   
 if( LibIntrin_SANITIZER_OPTS )
-  target_compile_options(libintrin PUBLIC ${LibIntrin_SANITIZER_OPTS})
+  target_compile_options(libintrin PRIVATE ${LibIntrin_SANITIZER_OPTS})
   target_link_options(libintrin PUBLIC ${LibIntrin_SANITIZER_OPTS})
 endif() 
 
